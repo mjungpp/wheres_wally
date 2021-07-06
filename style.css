@@ -1,0 +1,35 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.wally__overay {    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black transparent;
+}
+
+.wally__background__field{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(img/game__field/stage1.jpg) center/cover;
+}
+
+.wally__game__control {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wally__pop_up{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+    background-color: #000090;
+}
+
