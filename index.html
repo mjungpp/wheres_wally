@@ -7,25 +7,27 @@
     <meta name="description" content="Portfolio for front-end developer minjung">
     <meta name="author" content="park minjung">
     <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/18cb8c340a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <script src="src/main.js" defer></script>
     <title>Where's wally?</title>
 </head>
 <body>
-    <div class="wally__overay">
-        <div class="wally__background__field">
-            <header class="game__timer">
-                <span class="game__timer">00:00</span>
-            </header>
-            <section class="game__field">
-                <img src="img/willy_title.png" alt="where's wally title" class="game__title">
-            </section>
-            <section class="game__pop--up">
-                <img class="pop__up refresh__image" src="img/wallyBig.png"></img>
-                <div class="pop__up next__button">You Won👍 Next Level❓</div>
-            </section>
+    <div class="wally__background__img">
+        <div class="game__contents">
+            <img class="game__title" src="img/wally_title.png" alt="where's wally title">
+            <img class="game__startBtn" src="img/wally_start2.png">
+            </img>
+            <span class="game__timer">00:00</span>
         </div>
     </div>
+    <!-- pop-up--hide -->
+    <section class="pop-up">
+        <img class="pop__up__refresh__img" src="img/wallyBig.png"></img>
+        <div class="pop__up__next__btn">You Won👍 Next Level❓</div>
+    </section>
 </body>
 </html>

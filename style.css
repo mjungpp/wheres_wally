@@ -1,35 +1,56 @@
-html, body {
-    margin: 0;
-    padding: 0;
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
-.wally__overay {    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: black transparent;
+.wally__background__img {
+  /* display: flex;
+    flex-direction: column; */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(img/game__field/stage1.jpg) center/cover;
 }
 
-.wally__background__field{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: url(img/game__field/stage1.jpg) center/cover;
+.game__contents {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.game__title {
+  width: 1000px;
+  margin: auto;
+}
+
+.game__startBtn {
+  width: 300px;
+  font-size: 60px;
+  border-radius: 20px;
+  margin: auto;
+  transition: all 300ms ease-in;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}
+
+.game__startBtn:hover {
+  transform: scale(1.1);
 }
 
 .wally__game__control {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.wally__pop_up{
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    width: 300px;
-    height: 100px;
-    background-color: #000090;
+.wally__pop_up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 100px;
+  background-color: #000090;
 }
-
