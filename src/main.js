@@ -79,9 +79,9 @@ function findWally(event){
     let wallyY = Math.round(y / screenHeight * 100);
 
     if(wallyX >= 77 && wallyX <= 78 && wallyY >= 48 && wallyY <= 51){
-        gameFinish(win);
+        finishGame('win');
     }else {
-        gameFinish(lose);
+        finishGame('lose');
     }
 }
 
