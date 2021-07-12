@@ -4,8 +4,9 @@ const startBtn = document.querySelector('.game__startBtn');
 const startContent = document.querySelector('.overay');
 const gameTimer = document.querySelector('.game__timer');
 const gameField = document.querySelector('.game__field');
-
 const bgSound = new Audio('./sound/bg.mp3');
+const screenWidth = window.innerWidth;
+const screenHeight = window.innerHeight;
 
 let started = false;
 let timer = undefined;
@@ -50,7 +51,7 @@ function startGameTimer() {
     timer = setInterval(() => {
         if(remainingTimeSec <= 0) {
             clearInterval(timer);
-            finishGame();
+            finishGame(lose);
             return;
         }
         updateTimerText(--remainingTimeSec);
@@ -69,14 +70,25 @@ function playSound(sound) {
 }
 
 function findWally(event){
-    console.log(event.clientX, event.clientY);
+
+    let x = event.clientX;
+    let y = event.clientY;
+
+    let wallyX = Math.round(x / screenWidth * 100);
+    let wallyY = Math.round(y / screenHeight * 100);
+
+    if(wallyX >= 77 && wallyX <= 78 && wallyY >= 48 && wallyY <= 51){
+        gameFinish(win);
+    }else {
+        gameFinish(lose);
+    }
 }
 
 function stopGameTimer() {
     sound.pause();
 }
 
-function finishGame(){
+function finishGame(win){
     started = false;
     showPopUpWithText();
 
