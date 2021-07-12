@@ -5,13 +5,16 @@ const startContent = document.querySelector('.overay');
 const gameTimer = document.querySelector('.game__timer');
 const gameField = document.querySelector('.game__field');
 const bgSound = new Audio('./sound/bg.mp3');
-const popup = document.querySelector('.pop__up__message');
+const winSound = new Audio('./sound/game_win.mp3');
+const loseSound = new Audio('./sound/alert.wav');
+const popup = document.querySelector('.pop-up');
+const popup__msg = document.querySelector('.pop__up__message');
 const screenWidth = window.innerWidth;
 const screenHeight = window.innerHeight;
 
 let started = false;
 let timer = undefined;
-const GAME_DURATION_SEC = 150;
+const GAME_DURATION_SEC = 10;
 
 startBtn.addEventListener('click', () => {
     if(started){
@@ -22,7 +25,10 @@ startBtn.addEventListener('click', () => {
 });
 
 gameField.addEventListener('click', (e) => {
-    findWally(e);
+    if(started){
+        findWally(e);
+    }
+    return;
 })
 
 function startGame() {
@@ -52,6 +58,7 @@ function startGameTimer() {
     timer = setInterval(() => {
         if(remainingTimeSec <= 0) {
             clearInterval(timer);
+            stopSound(bgSound);
             finishGame(lose);
             return;
         }
@@ -78,7 +85,11 @@ function findWally(event){
     let wallyX = Math.round(x / screenWidth * 100);
     let wallyY = Math.round(y / screenHeight * 100);
 
-    if(wallyX >= 77 && wallyX <= 78 && wallyY >= 48 && wallyY <= 51){
+    console.log(wallyX);
+    console.log(wallyY);
+
+    // 77 <= wallyX <= 78) && (48<= wallyY <= 51)
+    if(wallyX <= 78){
         finishGame('win');
     }else {
         finishGame('lose');
@@ -99,10 +110,14 @@ function finishGame(win){
     stopGameTimer();
     stopSound(bgSound);
     showPopUpWithText(win ? 'YOU WON 🎉' : 'YOU LOST 💩');
-
+    if(win){
+        playSound(winSound);
+    }else {
+        playSound(loseSound);
+    }
 }
 
 function showPopUpWithText(message){
     popup.style.visibility = 'visible';
-    popup.innerHTML = `${message}`;
+    popup__msg.innerHTML = `${message}`;
 }
