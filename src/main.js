@@ -5,6 +5,7 @@ const startContent = document.querySelector('.overay');
 const gameTimer = document.querySelector('.game__timer');
 const gameField = document.querySelector('.game__field');
 const bgSound = new Audio('./sound/bg.mp3');
+const popup = document.querySelector('.pop__up__message');
 const screenWidth = window.innerWidth;
 const screenHeight = window.innerHeight;
 
@@ -84,16 +85,24 @@ function findWally(event){
     }
 }
 
-function stopGameTimer() {
+function stopSound(sound) {
     sound.pause();
+}
+
+function stopGameTimer() {
+    clearInterval(timer);
+
 }
 
 function finishGame(win){
     started = false;
-    showPopUpWithText();
+    stopGameTimer();
+    stopSound(bgSound);
+    showPopUpWithText(win ? 'YOU WON 🎉' : 'YOU LOST 💩');
 
 }
 
-function showPopUpWithText(){
-    
+function showPopUpWithText(message){
+    popup.style.visibility = 'visible';
+    popup.innerHTML = `${message}`;
 }
