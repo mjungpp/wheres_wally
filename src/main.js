@@ -109,7 +109,7 @@ function finishGame(win){
     started = false;
     stopGameTimer();
     stopSound(bgSound);
-    showPopUpWithText(win ? 'YOU WON 🎉' : 'YOU LOST 💩');
+    showPopUpWithText(win ? 'YOU WON <br> Next Level?🎉' : 'YOU LOST 💩');
     if(win){
         playSound(winSound);
     }else {
