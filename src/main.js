@@ -1,20 +1,25 @@
 'use strict';
 
 const startBtn = document.querySelector('.game__startBtn');
-const startContent = document.querySelector('.overay');
+const startContent = document.querySelector('.game__overay');
 const gameTimer = document.querySelector('.game__timer');
 const gameField = document.querySelector('.game__field');
+const bgImage = document.querySelector('.wally__background__img');
+const stageTwoBg = 'img/game__field/stage1.jpg';
+const stageThreeBg = 'img/game__field/stage2.jpg';
 const bgSound = new Audio('./sound/bg.mp3');
 const winSound = new Audio('./sound/game_win.mp3');
 const loseSound = new Audio('./sound/alert.wav');
 const popup = document.querySelector('.pop-up');
+const popupBtn = document.querySelector('.pop-up__button');
 const popup__msg = document.querySelector('.pop__up__message');
 const screenWidth = window.innerWidth;
 const screenHeight = window.innerHeight;
 
 let started = false;
 let timer = undefined;
-const GAME_DURATION_SEC = 10;
+const GAME_DURATION_SEC = 180;
+let level = 0;
 
 startBtn.addEventListener('click', () => {
     if(started){
@@ -29,18 +34,19 @@ gameField.addEventListener('click', (e) => {
         findWally(e);
     }
     return;
-})
+});
 
 function startGame() {
     started = true;
-    initGame();
+    // bgImage.style.backgroundImage = `url(${stageTwoBg})`;
+    initTimer();
     hideStartContent();
     showGameTimer();
     playSound(bgSound);
     startGameTimer();
 }
 
-function initGame() {
+function initTimer() {
     timer = undefined;
 }
 
@@ -59,7 +65,7 @@ function startGameTimer() {
         if(remainingTimeSec <= 0) {
             clearInterval(timer);
             stopSound(bgSound);
-            finishGame(lose);
+            stopGame(lose);
             return;
         }
         updateTimerText(--remainingTimeSec);
@@ -77,22 +83,30 @@ function playSound(sound) {
     sound.play();
 }
 
-function findWally(event){
+function findWally(e){
 
-    let x = event.clientX;
-    let y = event.clientY;
+    let x = e.clientX;
+    let y = e.clientY;
 
-    let wallyX = Math.round(x / screenWidth * 100);
-    let wallyY = Math.round(y / screenHeight * 100);
+    let pointX = Math.round(x / screenWidth * 100);
+    let pointY = Math.round(y / screenHeight * 100);
 
-    console.log(wallyX);
-    console.log(wallyY);
-
-    // 77 <= wallyX <= 78) && (48<= wallyY <= 51)
-    if(wallyX <= 78){
-        finishGame('win');
-    }else {
-        finishGame('lose');
+    if(level == 0){
+        if((pointX >= 78 && pointX < 80) && (pointY >= 48 && pointY < 52)){
+            stopGame(true);
+        }else {
+            stopGame(false);
+        }
+    }
+    
+    if(level == 1){
+        console.log(`wallyX : ${pointX}`);
+        console.log(`wallyY : ${pointY}`);
+    }
+    
+    if(level == 2){
+        console.log(`wallyX : ${pointX}`);
+        console.log(`wallyY : ${pointY}`);
     }
 }
 
@@ -102,22 +116,36 @@ function stopSound(sound) {
 
 function stopGameTimer() {
     clearInterval(timer);
-
 }
 
-function finishGame(win){
+function stopGame(win){
     started = false;
     stopGameTimer();
     stopSound(bgSound);
-    showPopUpWithText(win ? 'YOU WON <br> Next Level?🎉' : 'YOU LOST 💩');
     if(win){
         playSound(winSound);
+        ++level;
     }else {
         playSound(loseSound);
     }
+    showPopUpWithText(win ? 'YOU WON🎉<br/>Next Level❓' : 'YOU LOST💩<br/>Replay❓', win);
 }
 
-function showPopUpWithText(message){
+function showPopUpWithText(message, win){
     popup.style.visibility = 'visible';
-    popup__msg.innerHTML = `${message}`;
+
+    const icon = popupBtn.querySelector('.fas');
+    if(level < 2){
+        if(win){
+            icon.classList.add('fa-play');
+            icon.classList.remove('fa-redo');
+        }else {
+            icon.classList.add('fa-redo');
+            icon.classList.remove('fa-play');
+        }
+        popup__msg.innerHTML = `${message}`;
+    // the end
+    }else {
+        popup__msg.innerHTML = `YOU FINISH!👍`;
+    }
 }

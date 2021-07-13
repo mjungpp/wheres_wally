@@ -1,10 +1,16 @@
+:root {
+  --button--size: 45px;
+  --white--color: #ffffff;
+  --red--color: #b7472a;
+}
+
 html,
 body {
   display: block;
   margin: 0;
 }
 
-.overay {
+.game__overay {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -75,11 +81,21 @@ body {
   visibility: hidden;
 }
 .pop-up__button {
-  width: 45px;
-  height: 45px;
+  width: var(--button--size);
+  height: var(--button--size);
   padding: 0px 5px;
   font-size: 25px;
   margin-bottom: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 300ms ease;
+  background-color: var(--white--color);
+  border-radius: 50%;
+}
+
+.pop-up__button:hover {
+  transform: scale(1.05);
 }
 
 .pop__up__message {
