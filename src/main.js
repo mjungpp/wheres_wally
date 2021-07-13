@@ -1,20 +1,25 @@
 'use strict';
 
+// game field
 const startBtn = document.querySelector('.game__startBtn');
 const startContent = document.querySelector('.game__overay');
 const gameTimer = document.querySelector('.game__timer');
 const gameField = document.querySelector('.game__field');
-const bgImage = document.querySelector('.wally__background__img');
+const bgImage = document.querySelector('.game__background__img');
+const stageOneBg = 'img/game__field/stage0.jpg';
 const stageTwoBg = 'img/game__field/stage1.jpg';
 const stageThreeBg = 'img/game__field/stage2.jpg';
+
+// sound
 const bgSound = new Audio('./sound/bg.mp3');
 const winSound = new Audio('./sound/game_win.mp3');
 const loseSound = new Audio('./sound/alert.wav');
+
+// popup
 const popup = document.querySelector('.pop-up');
 const popupBtn = document.querySelector('.pop-up__button');
+const icon = popupBtn.querySelector('.fas');
 const popup__msg = document.querySelector('.pop__up__message');
-const screenWidth = window.innerWidth;
-const screenHeight = window.innerHeight;
 
 let started = false;
 let timer = undefined;
@@ -36,11 +41,26 @@ gameField.addEventListener('click', (e) => {
     return;
 });
 
+popupBtn.addEventListener('click', () => {
+    hidePopup();
+    if(icon.classList.contains('fa-arrow-right')){
+        ++level;
+    }
+    if(level == 3 && icon.classList.contains('fa-redo')){
+        level = 0;
+    }
+    startGame();
+});
+
+function hidePopup(){
+    popup.style.visibility = 'hidden';
+}
+
 function startGame() {
     started = true;
-    // bgImage.style.backgroundImage = `url(${stageTwoBg})`;
     initTimer();
     hideStartContent();
+    setBackground();
     showGameTimer();
     playSound(bgSound);
     startGameTimer();
@@ -48,6 +68,18 @@ function startGame() {
 
 function initTimer() {
     timer = undefined;
+}
+
+function setBackground(){
+    if(level == 0) {
+        bgImage.style.backgroundImage = `url(${stageOneBg})`;
+    }
+    if(level == 1){
+        bgImage.style.backgroundImage = `url(${stageTwoBg})`;
+    }
+    if(level == 2){
+        bgImage.style.backgroundImage = `url(${stageThreeBg})`;
+    }
 }
 
 function hideStartContent() {
@@ -85,6 +117,9 @@ function playSound(sound) {
 
 function findWally(e){
 
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
     let x = e.clientX;
     let y = e.clientY;
 
@@ -92,21 +127,29 @@ function findWally(e){
     let pointY = Math.round(y / screenHeight * 100);
 
     if(level == 0){
-        if((pointX >= 78 && pointX < 80) && (pointY >= 48 && pointY < 52)){
-            stopGame(true);
-        }else {
-            stopGame(false);
-        }
+        console.log(`wallyX : ${pointX}`);
+        console.log(`wallyY : ${pointY}`);
+        // if((pointX >= 78 && pointX < 80) && (pointY >= 48 && pointY < 52)){
+        //     stopGame(true);
+        // }else {
+        //     stopGame(false);
+        // }
+        stopGame(true);
     }
     
     if(level == 1){
-        console.log(`wallyX : ${pointX}`);
-        console.log(`wallyY : ${pointY}`);
+        // if((pointX >= 73 && pointX < 76) && (pointY >= 58 && pointY < 64)){
+        //     stopGame(true);
+        // }else {
+        //     stopGame(false);
+        // }
+        stopGame(true);
     }
     
     if(level == 2){
         console.log(`wallyX : ${pointX}`);
         console.log(`wallyY : ${pointY}`);
+        stopGame(true);
     }
 }
 
@@ -124,28 +167,25 @@ function stopGame(win){
     stopSound(bgSound);
     if(win){
         playSound(winSound);
-        ++level;
     }else {
         playSound(loseSound);
     }
     showPopUpWithText(win ? 'YOU WON🎉<br/>Next Level❓' : 'YOU LOST💩<br/>Replay❓', win);
 }
-
 function showPopUpWithText(message, win){
     popup.style.visibility = 'visible';
-
-    const icon = popupBtn.querySelector('.fas');
     if(level < 2){
         if(win){
-            icon.classList.add('fa-play');
-            icon.classList.remove('fa-redo');
+            icon.classList.add('fa-arrow-right');
         }else {
             icon.classList.add('fa-redo');
-            icon.classList.remove('fa-play');
         }
         popup__msg.innerHTML = `${message}`;
     // the end
     }else {
-        popup__msg.innerHTML = `YOU FINISH!👍`;
+        started = false;
+        icon.classList.add('fa-redo');
+        popup__msg.innerHTML = `YOU FINISH!👍 REPLAY?`;
+        
     }
 }
