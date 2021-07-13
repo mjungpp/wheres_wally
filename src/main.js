@@ -127,29 +127,25 @@ function findWally(e){
     let pointY = Math.round(y / screenHeight * 100);
 
     if(level == 0){
-        console.log(`wallyX : ${pointX}`);
-        console.log(`wallyY : ${pointY}`);
-        // if((pointX >= 78 && pointX < 80) && (pointY >= 48 && pointY < 52)){
-        //     stopGame(true);
-        // }else {
-        //     stopGame(false);
-        // }
-        stopGame(true);
+        if((pointX >= 86 && pointX < 89) && (pointY >= 90 && pointY < 97)){
+            stopGame(true);
+        }else {
+            stopGame(false);
+        }
     }
-    
     if(level == 1){
-        // if((pointX >= 73 && pointX < 76) && (pointY >= 58 && pointY < 64)){
-        //     stopGame(true);
-        // }else {
-        //     stopGame(false);
-        // }
-        stopGame(true);
+        if((pointX >= 48 && pointX < 50) && (pointY >= 48 && pointY < 52)){
+            stopGame(true);
+        }else {
+            stopGame(false);
+        }
     }
-    
     if(level == 2){
-        console.log(`wallyX : ${pointX}`);
-        console.log(`wallyY : ${pointY}`);
-        stopGame(true);
+        if((pointX >= 62 && pointX < 64) && (pointY >= 38 && pointY < 45)){
+            stopGame(true);
+        }else {
+            stopGame(false);
+        }
     }
 }
 
@@ -172,20 +168,20 @@ function stopGame(win){
     }
     showPopUpWithText(win ? 'YOU WON🎉<br/>Next Level❓' : 'YOU LOST💩<br/>Replay❓', win);
 }
+
 function showPopUpWithText(message, win){
     popup.style.visibility = 'visible';
-    if(level < 2){
-        if(win){
-            icon.classList.add('fa-arrow-right');
-        }else {
+    if(win){
+        if(level == 2){
             icon.classList.add('fa-redo');
+            popup__msg.innerHTML = `YOU FINISH!👍 REPLAY?`;
+        }else{
+            icon.classList.add('fa-arrow-right');
+            icon.classList.remove('fa-redo');
         }
-        popup__msg.innerHTML = `${message}`;
-    // the end
     }else {
-        started = false;
         icon.classList.add('fa-redo');
-        popup__msg.innerHTML = `YOU FINISH!👍 REPLAY?`;
-        
+        icon.classList.remove('fa-arrow-right');
     }
+    popup__msg.innerHTML = `${message}`;
 }
