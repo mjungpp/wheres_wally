@@ -1,5 +1,7 @@
 'use strict';
 
+import * as sound from './sound.js';
+
 // game field
 const startBtn = document.querySelector('.game__startBtn');
 const startContent = document.querySelector('.game__overay');
@@ -9,11 +11,6 @@ const bgImage = document.querySelector('.game__background__img');
 const stageOneBg = 'img/game__field/stage0.jpg';
 const stageTwoBg = 'img/game__field/stage1.jpg';
 const stageThreeBg = 'img/game__field/stage2.jpg';
-
-// sound
-const bgSound = new Audio('./sound/bg.mp3');
-const winSound = new Audio('./sound/game_win.mp3');
-const loseSound = new Audio('./sound/alert.wav');
 
 // popup
 const popup = document.querySelector('.pop-up');
@@ -28,7 +25,7 @@ let level = 0;
 
 startBtn.addEventListener('click', () => {
     if(started){
-        stopGame();
+        finishGame();
     }else {
         startGame();
     }
@@ -60,9 +57,9 @@ function startGame() {
     started = true;
     initTimer();
     hideStartContent();
-    setBackground();
+    setBackgroundImg();
     showGameTimer();
-    playSound(bgSound);
+    sound.playBackground();
     startGameTimer();
 }
 
@@ -70,7 +67,7 @@ function initTimer() {
     timer = undefined;
 }
 
-function setBackground(){
+function setBackgroundImg(){
     if(level == 0) {
         bgImage.style.backgroundImage = `url(${stageOneBg})`;
     }
@@ -96,8 +93,8 @@ function startGameTimer() {
     timer = setInterval(() => {
         if(remainingTimeSec <= 0) {
             clearInterval(timer);
-            stopSound(bgSound);
-            stopGame(lose);
+            sound.stopBackground();
+            finishGame(false);
             return;
         }
         updateTimerText(--remainingTimeSec);
@@ -108,11 +105,6 @@ function updateTimerText(time) {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     gameTimer.innerHTML = `${minutes}:${seconds}`;
-}
-
-function playSound(sound) {
-    sound.currentTime = 0;
-    sound.play();
 }
 
 function findWally(e){
@@ -128,60 +120,57 @@ function findWally(e){
 
     if(level == 0){
         if((pointX >= 86 && pointX < 89) && (pointY >= 90 && pointY < 97)){
-            stopGame(true);
+            finishGame(true);
         }else {
-            stopGame(false);
+            finishGame(false);
         }
     }
     if(level == 1){
         if((pointX >= 48 && pointX < 50) && (pointY >= 48 && pointY < 52)){
-            stopGame(true);
+            finishGame(true);
         }else {
-            stopGame(false);
+            finishGame(false);
         }
     }
     if(level == 2){
         if((pointX >= 62 && pointX < 64) && (pointY >= 38 && pointY < 45)){
-            stopGame(true);
+            finishGame(true);
         }else {
-            stopGame(false);
+            finishGame(false);
         }
     }
-}
-
-function stopSound(sound) {
-    sound.pause();
 }
 
 function stopGameTimer() {
     clearInterval(timer);
 }
 
-function stopGame(win){
+function finishGame(win){
     started = false;
     stopGameTimer();
-    stopSound(bgSound);
+    sound.stopBackground();
     if(win){
-        playSound(winSound);
+        sound.playWin();
     }else {
-        playSound(loseSound);
+        sound.playAlert();
     }
     showPopUpWithText(win ? 'YOU WON🎉<br/>Next Level❓' : 'YOU LOST💩<br/>Replay❓', win);
 }
 
 function showPopUpWithText(message, win){
     popup.style.visibility = 'visible';
+
     if(win){
-        if(level == 2){
-            icon.classList.add('fa-redo');
-            popup__msg.innerHTML = `YOU FINISH!👍 REPLAY?`;
-        }else{
-            icon.classList.add('fa-arrow-right');
-            icon.classList.remove('fa-redo');
-        }
+        icon.classList.add('fa-arrow-right');
+        icon.classList.remove('fa-redo');
     }else {
         icon.classList.add('fa-redo');
         icon.classList.remove('fa-arrow-right');
     }
     popup__msg.innerHTML = `${message}`;
+
+    if(win && level == 2){
+        icon.classList.add('fa-redo');
+        popup__msg.innerHTML = `YOU FINISH!👍 REPLAY?`;
+    }
 }
