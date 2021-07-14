@@ -1,3 +1,5 @@
+'use strict';
+
 const bgSound = new Audio('./sound/bg.mp3');
 const winSound = new Audio('./sound/game_win.mp3');
 const alertSound = new Audio('./sound/alert.wav');
