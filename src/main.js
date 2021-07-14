@@ -1,9 +1,8 @@
 'use strict';
 
-import PopUp from './popup.js';
 import * as sound from './sound.js';
 
-// game field
+
 const startBtn = document.querySelector('.game__startBtn');
 const startContent = document.querySelector('.game__overay');
 const gameTimer = document.querySelector('.game__timer');
@@ -14,6 +13,7 @@ const stageOneBg = 'img/game__field/stage0.jpg';
 const stageTwoBg = 'img/game__field/stage1.jpg';
 const stageThreeBg = 'img/game__field/stage2.jpg';
 
+// popup
 const popup = document.querySelector('.pop-up');
 const popupBtn = document.querySelector('.pop-up__button');
 const icon = popupBtn.querySelector('.fas');
@@ -39,8 +39,8 @@ gameField.addEventListener('click', (e) => {
     return;
 });
 
+// popup
 popupBtn.addEventListener('click', () => {
-    gameFinishBanner.hide();
     if(icon.classList.contains('fa-arrow-right')){
         ++level;
     }
@@ -154,6 +154,7 @@ function finishGame(win){
     showPopUpWithText(win ? 'YOU WON🎉<br/>Next Level❓' : 'YOU LOST💩<br/>Replay❓', win);
 }
 
+// popup
 function showPopUpWithText(message, win){
     popup.style.visibility = 'visible';
 
@@ -168,6 +169,7 @@ function showPopUpWithText(message, win){
 
     if(win && level == 2){
         icon.classList.add('fa-redo');
+        icon.classList.remove('fa-arrow-right');
         popup__msg.innerHTML = `YOU FINISH!👍 REPLAY?`;
     }
 }
