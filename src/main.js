@@ -1,18 +1,19 @@
 'use strict';
 
+import PopUp from './popup.js';
 import * as sound from './sound.js';
 
 // game field
 const startBtn = document.querySelector('.game__startBtn');
 const startContent = document.querySelector('.game__overay');
 const gameTimer = document.querySelector('.game__timer');
+
 const gameField = document.querySelector('.game__field');
 const bgImage = document.querySelector('.game__background__img');
 const stageOneBg = 'img/game__field/stage0.jpg';
 const stageTwoBg = 'img/game__field/stage1.jpg';
 const stageThreeBg = 'img/game__field/stage2.jpg';
 
-// popup
 const popup = document.querySelector('.pop-up');
 const popupBtn = document.querySelector('.pop-up__button');
 const icon = popupBtn.querySelector('.fas');
@@ -39,7 +40,7 @@ gameField.addEventListener('click', (e) => {
 });
 
 popupBtn.addEventListener('click', () => {
-    hidePopup();
+    gameFinishBanner.hide();
     if(icon.classList.contains('fa-arrow-right')){
         ++level;
     }
@@ -48,10 +49,6 @@ popupBtn.addEventListener('click', () => {
     }
     startGame();
 });
-
-function hidePopup(){
-    popup.style.visibility = 'hidden';
-}
 
 function startGame() {
     started = true;
