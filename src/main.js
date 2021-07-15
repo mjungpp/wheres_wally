@@ -8,10 +8,7 @@ const startBtn = document.querySelector('.game__startBtn');
 const startContent = document.querySelector('.game__overay');
 const gameTimer = document.querySelector('.game__timer');
 const gameField = document.querySelector('.game__field');
-const bgImage = document.querySelector('.game__background__img');
-const stageOneBg = 'img/game__field/stage0.jpg';
-const stageTwoBg = 'img/game__field/stage1.jpg';
-const stageThreeBg = 'img/game__field/stage2.jpg';
+const backgroundIme = document.querySelector('.game__background__img');
 
 // game
 let started = false;
@@ -60,15 +57,17 @@ function initTimer() {
 
 // field.js
 function setBackgroundImg(){
+    let imgPath;
     if(level == 0) {
-        bgImage.style.backgroundImage = `url(${stageOneBg})`;
+        imgPath = `url(img/game__field/stage0.jpg)`;
     }
     if(level == 1){
-        bgImage.style.backgroundImage = `url(${stageTwoBg})`;
+        imgPath = `url(img/game__field/stage1.jpg)`;
     }
     if(level == 2){
-        bgImage.style.backgroundImage = `url(${stageThreeBg})`;
+        imgPath = `url(img/game__field/stage2.jpg)`;
     }
+    backgroundIme.style.backgroundImage = `${imgPath}`;
 }
 
 function hideStartContent() {
