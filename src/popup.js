@@ -6,7 +6,6 @@ export default class PopUp{
         this.popupBtn = document.querySelector('.pop-up__button');
         this.icon = this.popupBtn.querySelector('.fas');
         this.popup__msg = document.querySelector('.pop__up__message');
-
         this.popupBtn.addEventListener('click', () => {
             this.hide();
             if(this.icon.classList.contains('fa-arrow-right')){
