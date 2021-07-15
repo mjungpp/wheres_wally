@@ -2,11 +2,10 @@
 
 import * as sound from './sound.js';
 
-
+// game field
 const startBtn = document.querySelector('.game__startBtn');
 const startContent = document.querySelector('.game__overay');
 const gameTimer = document.querySelector('.game__timer');
-
 const gameField = document.querySelector('.game__field');
 const bgImage = document.querySelector('.game__background__img');
 const stageOneBg = 'img/game__field/stage0.jpg';
@@ -24,13 +23,7 @@ let timer = undefined;
 const GAME_DURATION_SEC = 180;
 let level = 0;
 
-startBtn.addEventListener('click', () => {
-    if(started){
-        finishGame();
-    }else {
-        startGame();
-    }
-});
+startBtn.addEventListener('click', startGame);
 
 gameField.addEventListener('click', (e) => {
     if(started){
@@ -39,8 +32,8 @@ gameField.addEventListener('click', (e) => {
     return;
 });
 
-// popup
 popupBtn.addEventListener('click', () => {
+    hidePopup();
     if(icon.classList.contains('fa-arrow-right')){
         ++level;
     }
@@ -49,6 +42,10 @@ popupBtn.addEventListener('click', () => {
     }
     startGame();
 });
+
+function hidePopup(){
+    popup.style.visibility = 'hidden';
+}
 
 function startGame() {
     started = true;
@@ -91,7 +88,7 @@ function startGameTimer() {
         if(remainingTimeSec <= 0) {
             clearInterval(timer);
             sound.stopBackground();
-            finishGame(false);
+            finishGame('lose');
             return;
         }
         updateTimerText(--remainingTimeSec);
@@ -117,23 +114,23 @@ function findWally(e){
 
     if(level == 0){
         if((pointX >= 86 && pointX < 89) && (pointY >= 90 && pointY < 97)){
-            finishGame(true);
+            finishGame('win');
         }else {
-            finishGame(false);
+            finishGame('lose');
         }
     }
     if(level == 1){
         if((pointX >= 48 && pointX < 50) && (pointY >= 48 && pointY < 52)){
-            finishGame(true);
+            finishGame('win');
         }else {
-            finishGame(false);
+            finishGame('lose');
         }
     }
     if(level == 2){
         if((pointX >= 62 && pointX < 64) && (pointY >= 38 && pointY < 45)){
-            finishGame(true);
+            finishGame('finish');
         }else {
-            finishGame(false);
+            finishGame('lose');
         }
     }
 }
@@ -146,30 +143,34 @@ function finishGame(win){
     started = false;
     stopGameTimer();
     sound.stopBackground();
-    if(win){
+    if('win' || 'finish'){
         sound.playWin();
-    }else {
+    }
+    if('lose') {
         sound.playAlert();
     }
-    showPopUpWithText(win ? 'YOU WON🎉<br/>Next Level❓' : 'YOU LOST💩<br/>Replay❓', win);
+    showPopUpWithText(win);
 }
 
-// popup
-function showPopUpWithText(message, win){
+function showPopUpWithText(win){
     popup.style.visibility = 'visible';
+    let message;
 
-    if(win){
+    if(win == 'win'){
         icon.classList.add('fa-arrow-right');
         icon.classList.remove('fa-redo');
-    }else {
+        message = `YOU WON🎉<br/>Next Level❓`;
+    }
+    if(win == 'lose') {
         icon.classList.add('fa-redo');
         icon.classList.remove('fa-arrow-right');
+        message = `YOU LOST💩<br/>Replay❓`;
+    }
+    
+    if(win == 'finish'){
+        icon.classList.add('fa-redo');
+        icon.classList.remove('fa-arrow-right');
+        message = `YOU FINISH!👍 REPLAY?`;
     }
     popup__msg.innerHTML = `${message}`;
-
-    if(win && level == 2){
-        icon.classList.add('fa-redo');
-        icon.classList.remove('fa-arrow-right');
-        popup__msg.innerHTML = `YOU FINISH!👍 REPLAY?`;
-    }
 }
