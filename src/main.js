@@ -1,6 +1,7 @@
 'use strict';
 
 import * as sound from './sound.js';
+import PopUp from './popup.js';
 
 // game field
 const startBtn = document.querySelector('.game__startBtn');
@@ -12,12 +13,7 @@ const stageOneBg = 'img/game__field/stage0.jpg';
 const stageTwoBg = 'img/game__field/stage1.jpg';
 const stageThreeBg = 'img/game__field/stage2.jpg';
 
-// popup
-const popup = document.querySelector('.pop-up');
-const popupBtn = document.querySelector('.pop-up__button');
-const icon = popupBtn.querySelector('.fas');
-const popup__msg = document.querySelector('.pop__up__message');
-
+// game
 let started = false;
 let timer = undefined;
 const GAME_DURATION_SEC = 180;
@@ -32,19 +28,19 @@ gameField.addEventListener('click', (e) => {
     return;
 });
 
-popupBtn.addEventListener('click', () => {
-    hidePopup();
-    if(icon.classList.contains('fa-arrow-right')){
+const gameFinishBanner = new PopUp();
+gameFinishBanner.setClickListner((button) => {
+    onItemClick(button);
+});
+
+function onItemClick(button) {
+    if(button == 'next'){
         ++level;
     }
-    if(level == 3 && icon.classList.contains('fa-redo')){
+    if(level == 2 && button == 'replay'){
         level = 0;
     }
     startGame();
-});
-
-function hidePopup(){
-    popup.style.visibility = 'hidden';
 }
 
 function startGame() {
@@ -57,10 +53,12 @@ function startGame() {
     startGameTimer();
 }
 
+// game.js
 function initTimer() {
     timer = undefined;
 }
 
+// field.js
 function setBackgroundImg(){
     if(level == 0) {
         bgImage.style.backgroundImage = `url(${stageOneBg})`;
@@ -81,6 +79,7 @@ function showGameTimer() {
     gameTimer.style.visibility = 'visible';
 }
 
+// game.js
 function startGameTimer() {
     let remainingTimeSec = GAME_DURATION_SEC;
     updateTimerText(remainingTimeSec);
@@ -101,6 +100,7 @@ function updateTimerText(time) {
     gameTimer.innerHTML = `${minutes}:${seconds}`;
 }
 
+// field.js
 function findWally(e){
 
     const screenWidth = window.innerWidth;
@@ -135,10 +135,12 @@ function findWally(e){
     }
 }
 
+// game.js
 function stopGameTimer() {
     clearInterval(timer);
 }
 
+// game.js
 function finishGame(win){
     started = false;
     stopGameTimer();
@@ -149,28 +151,5 @@ function finishGame(win){
     if('lose') {
         sound.playAlert();
     }
-    showPopUpWithText(win);
-}
-
-function showPopUpWithText(win){
-    popup.style.visibility = 'visible';
-    let message;
-
-    if(win == 'win'){
-        icon.classList.add('fa-arrow-right');
-        icon.classList.remove('fa-redo');
-        message = `YOU WON🎉<br/>Next Level❓`;
-    }
-    if(win == 'lose') {
-        icon.classList.add('fa-redo');
-        icon.classList.remove('fa-arrow-right');
-        message = `YOU LOST💩<br/>Replay❓`;
-    }
-    
-    if(win == 'finish'){
-        icon.classList.add('fa-redo');
-        icon.classList.remove('fa-arrow-right');
-        message = `YOU FINISH!👍 REPLAY?`;
-    }
-    popup__msg.innerHTML = `${message}`;
+    gameFinishBanner.showWithText(win);
 }
