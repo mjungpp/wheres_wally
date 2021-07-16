@@ -12,7 +12,7 @@ const gameField = document.querySelector('.game__field');
 // game
 let started = false;
 let timer = undefined;
-const GAME_DURATION_SEC = 180;
+const GAME_DURATION_SEC = 10;
 let level = 0;
 
 startBtn.addEventListener('click', startGame);
@@ -135,10 +135,10 @@ function finishGame(win){
     started = false;
     stopGameTimer();
     sound.stopBackground();
-    if('win' || 'finish'){
+    if(win == 'win' || win == 'finish'){
         sound.playWin();
     }
-    if('lose') {
+    if(win == 'lose') {
         sound.playAlert();
     }
     gameFinishBanner.showWithText(win);

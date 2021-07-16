@@ -11,6 +11,9 @@ export default class PopUp{
             if(this.icon.classList.contains('fa-arrow-right')){
                 this.onItemClick && this.onItemClick('next');
             }
+            if(this.icon.classList.contains('fa-stop')){
+                this.onItemClick && this.onItemClick('replay');
+            }
             if(this.icon.classList.contains('fa-redo')){
                 this.onItemClick && this.onItemClick('replay');
             }
@@ -26,11 +29,11 @@ export default class PopUp{
 
         if(win == 'win'){
             this.icon.classList.add('fa-arrow-right');
-            this.icon.classList.remove('fa-redo');
+            this.icon.classList.remove('fa-stop');
             message = `YOU WON🎉<br/>Next Level❓`;
         }
         if(win == 'lose') {
-            this.icon.classList.add('fa-redo');
+            this.icon.classList.add('fa-stop');
             this.icon.classList.remove('fa-arrow-right');
             message = `YOU LOST💩<br/>Replay❓`;
         }
@@ -38,6 +41,7 @@ export default class PopUp{
         if(win == 'finish'){
             this.icon.classList.add('fa-redo');
             this.icon.classList.remove('fa-arrow-right');
+            this.icon.classList.remove('fa-stop');
             message = `YOU FINISH!👍 REPLAY?`;
         }
         this.popup__msg.innerHTML = `${message}`;
