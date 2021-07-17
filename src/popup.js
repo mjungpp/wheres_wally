@@ -8,14 +8,14 @@ export default class PopUp{
         this.popup__msg = document.querySelector('.pop__up__message');
         this.popupBtn.addEventListener('click', () => {
             this.hide();
-            if(this.icon.classList.contains('fa-arrow-right')){
+            if(this.icon.classList.contains('fa-step-forward')){
                 this.onItemClick && this.onItemClick('next');
-            }
-            if(this.icon.classList.contains('fa-stop')){
-                this.onItemClick && this.onItemClick('replay');
             }
             if(this.icon.classList.contains('fa-redo')){
                 this.onItemClick && this.onItemClick('replay');
+            }
+            if(this.icon.classList.contains('fa-fast-backward')){
+                this.onItemClick && this.onItemClick('finish');
             }
         });
     }
@@ -28,20 +28,19 @@ export default class PopUp{
         let message;
 
         if(win == 'win'){
-            this.icon.classList.add('fa-arrow-right');
-            this.icon.classList.remove('fa-stop');
+            this.icon.classList.add('fa-step-forward');
+            this.icon.classList.remove('fa-redo');
             message = `YOU WON🎉<br/>Next Level❓`;
         }
         if(win == 'lose') {
-            this.icon.classList.add('fa-stop');
-            this.icon.classList.remove('fa-arrow-right');
+            this.icon.classList.add('fa-redo');
+            this.icon.classList.remove('fa-step-forward');
             message = `YOU LOST💩<br/>Replay❓`;
         }
         
         if(win == 'finish'){
-            this.icon.classList.add('fa-redo');
-            this.icon.classList.remove('fa-arrow-right');
-            this.icon.classList.remove('fa-stop');
+            this.icon.classList.add('fa-fast-backward');
+            this.icon.classList.remove('fa-step-forward');
             message = `YOU FINISH!👍 REPLAY?`;
         }
         this.popup__msg.innerHTML = `${message}`;

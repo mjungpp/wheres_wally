@@ -33,7 +33,7 @@ function onItemClick(button) {
     if(button == 'next'){
         ++level;
     }
-    if(level == 2 && button == 'replay'){
+    if(button == 'finish'){
         level = 0;
     }
     startGame();
@@ -142,4 +142,5 @@ function finishGame(win){
         sound.playAlert();
     }
     gameFinishBanner.showWithText(win);
+    return;
 }

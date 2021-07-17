@@ -11,7 +11,7 @@ body {
 }
 
 .game__overay {
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -70,8 +70,8 @@ body {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 500px;
-  left: 800px;
+  top: 40%;
+  left: 38%;
   width: 450px;
   height: 200px;
   background-color: #00000090;
