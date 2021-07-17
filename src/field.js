@@ -20,7 +20,7 @@ export default class Field {
         this.bgImage.style.backgroundImage = `${imgPath}`;
     }
 
-    onClick(event){
+    onClick = (event) =>{
 
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
