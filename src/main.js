@@ -2,32 +2,52 @@
 
 import * as sound from './sound.js';
 import PopUp from './popup.js';
+import Field from './field.js';
 
-// game field
 const startBtn = document.querySelector('.game__startBtn');
-const startContent = document.querySelector('.game__overay');
 const gameTimer = document.querySelector('.game__timer');
-const gameField = document.querySelector('.game__field');
 
 // game
 let started = false;
 let timer = undefined;
-const GAME_DURATION_SEC = 10;
+const GAME_DURATION_SEC = 150;
 let level = 0;
 
 startBtn.addEventListener('click', startGame);
-
-gameField.addEventListener('click', (e) => {
-    if(started){
-        findWally(e);
-    }
-    return;
-});
 
 const gameFinishBanner = new PopUp();
 gameFinishBanner.setClickListner((button) => {
     onItemClick(button);
 });
+
+const gameField = new Field();
+gameField.setClickListener(onFieldClick);
+function onFieldClick(win){
+    if(!started){
+        return;
+    }
+    if(level == 0){
+        if(win == 'win'){
+            finishGame('win');
+        }else {
+            finishGame('lose');
+        }
+    }
+    if(level == 1){
+        if(win == 'win'){
+            finishGame('win');
+        }else{
+            finishGame('lose');
+        }
+    }
+    if(level == 2){
+        if(win == 'finish'){
+            finishGame('finish');
+        }else {
+            finishGame('lose');
+        }
+    }
+}
 
 function onItemClick(button) {
     if(button == 'next'){
@@ -42,7 +62,7 @@ function onItemClick(button) {
 function startGame() {
     started = true;
     initTimer();
-    hideStartContent();
+    gameField.hideStartContent();
     setBackgroundImg();
     showGameTimer();
     sound.playBackground();
@@ -56,13 +76,8 @@ function initTimer() {
 
 // field.js
 function setBackgroundImg(){
-    const backgroundImg = document.querySelector('.game__background__img');
     let imgPath = `url(img/game__field/stage${level}.jpg)`;
-    backgroundImg.style.backgroundImage = `${imgPath}`;
-}
-
-function hideStartContent() {
-    startContent.remove();
+    gameField.setBackgroundImage(imgPath);
 }
 
 function showGameTimer() {
@@ -88,41 +103,6 @@ function updateTimerText(time) {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     gameTimer.innerHTML = `${minutes}:${seconds}`;
-}
-
-// field.js
-function findWally(e){
-
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-
-    let x = e.clientX;
-    let y = e.clientY;
-
-    let pointX = Math.round(x / screenWidth * 100);
-    let pointY = Math.round(y / screenHeight * 100);
-
-    if(level == 0){
-        if((pointX >= 86 && pointX < 89) && (pointY >= 90 && pointY < 97)){
-            finishGame('win');
-        }else {
-            finishGame('lose');
-        }
-    }
-    if(level == 1){
-        if((pointX >= 48 && pointX < 50) && (pointY >= 48 && pointY < 52)){
-            finishGame('win');
-        }else {
-            finishGame('lose');
-        }
-    }
-    if(level == 2){
-        if((pointX >= 62 && pointX < 64) && (pointY >= 38 && pointY < 45)){
-            finishGame('finish');
-        }else {
-            finishGame('lose');
-        }
-    }
 }
 
 // game.js
