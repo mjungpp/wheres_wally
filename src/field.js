@@ -32,19 +32,19 @@ export default class Field {
     let pointY = Math.round(y / screenHeight * 100);
 
     if((pointX >= 86 && pointX < 89) && (pointY >= 90 && pointY < 97)){
-        this.onFieldClick && this.onFieldClick('win');
+        this.onFieldClick && this.onFieldClick('first', 'win');
     }else {
-        this.onFieldClick && this.onFieldClick('lose');
+        this.onFieldClick && this.onFieldClick('first', 'lose');
     }
     if((pointX >= 48 && pointX < 50) && (pointY >= 48 && pointY < 52)){
-        this.onFieldClick && this.onFieldClick('win');
+        this.onFieldClick && this.onFieldClick('second', 'win');
     }else {
-        this.onFieldClick && this.onFieldClick('lose');
+        this.onFieldClick && this.onFieldClick('second', 'lose');
     }
     if((pointX >= 62 && pointX < 64) && (pointY >= 38 && pointY < 45)){
-        this.onFieldClick && this.onFieldClick('finish');
+        this.onFieldClick && this.onFieldClick('third', 'win');
     }else {
-        this.onFieldClick && this.onFieldClick('lose');
-    }
+        this.onFieldClick && this.onFieldClick('third', 'lose');
+        }
     }
 }

@@ -22,28 +22,28 @@ gameFinishBanner.setClickListner((button) => {
 
 const gameField = new Field();
 gameField.setClickListener(onFieldClick);
-function onFieldClick(win){
+function onFieldClick(stage, win){
     if(!started){
         return;
     }
     if(level == 0){
-        if(win == 'win'){
+        if(stage == 'first' && win == 'win'){
             finishGame('win');
-        }else {
+        }else if(stage == 'first' && win == 'lose'){
             finishGame('lose');
         }
     }
     if(level == 1){
-        if(win == 'win'){
+        if(stage == 'second' && win == 'win'){
             finishGame('win');
-        }else{
+        }else if(stage == 'second' && win == 'lose'){
             finishGame('lose');
         }
     }
     if(level == 2){
-        if(win == 'finish'){
+        if(stage == 'third' && win == 'win'){
             finishGame('finish');
-        }else {
+        }else if(stage == 'third' && win == 'lose'){
             finishGame('lose');
         }
     }
@@ -122,5 +122,4 @@ function finishGame(win){
         sound.playAlert();
     }
     gameFinishBanner.showWithText(win);
-    return;
 }
