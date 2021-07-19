@@ -1,4 +1,4 @@
-# ✨월리를 찾아라✨
+## ✨Where's Wally? (월리를 찾아라!)✨
 
 ### Where's Wally❓
 
@@ -32,18 +32,17 @@
 
 ### Source Tree🌳
 
-📦mbti_test<br>
-┣ 📂data<br>
-┃ ┣ 📜data.json<br>
-┃ ┗ 📜result.json<br>
-┣ 📂img<br>
-┃ ┣ 📂question<br>
-┃ ┣ 📂results<br>
-┣ 📂src<br>
-┃ ┗ 📜main.js<br>
-┣ 📜index.html<br>
-┣ 📜README.md<br>
-┗ 📜style.css<br>
+wheres_wally           
+├─ img                 
+├─ sound               
+├─ src                 
+│  ├─ field.js         
+│  ├─ game.js          
+│  ├─ main.js          
+│  ├─ popup.js         
+│  └─ sound.js         
+├─ index.html               
+└─ style.css           
 
 ### Feedback🔖
 
@@ -53,33 +52,6 @@
 
 👤 : 결과에서 MBTI 유형은 나오지 않고 캐릭터와 특성만 나와서 결과의 MBTI 유형을 알 수 없어! (3건) <br>
 - 결과에 캐릭터의 MBTI 유형이 출력되지 않아, 어떤 MBTI 결과를 획득했는지에 대한 내용이 없어 불편하다는 의견이 있었습니다.
-
-#### 2. Font Size
-👤 : 글씨가 너무 작아서 눈이 침침해.. (5건)
-- 모바일에서의 폰트 사이즈가 너무 작다는 피드백이 있었습니다.
-#### 3. 결과 유형이 실제 유형과 다름
-
-👤 : 검사 결과가 내 실제 MBTI랑 좀 다른데? <br>
-테스트 결과 본인의 기존 유형과, 제 MBTI 테스트 결과가 일치하지 않는 사용자가 몇몇 발생했습니다.
-| num | 기존 본인 유형 | 테스트 결과 유형 |
-| :---: | :-: | :-: |
-| 1 | ENFP | INFP |
-| 2 | INFP | ISFP |
-| 3 | INFP | ENTP |
-| 4 | ENFP | ISFJ |
-| 5 | INFP | ISTP |
-| 6 | ESTJ | ESFP |
-| 7 | ESTP | ESFP |
-| 8 | INFP | ISFP |
-| 9 | INTJ | ISFJ |
-| 10 | INFP | INFJ |
-...
-
-이에 따라
-1. 결과 화면에 MBTI 유형을 출력
-2. 모바일에서의 폰트 사이즈를 8px -> 11px로 확대
-3. 검사 정확도를 높이기 위해 추가 질문지를 제작했습니다. json 파일에 설문 데이터를 총 8건 추가했습니다.
-
 ### Productor :busts_in_silhouette:
 
 #### minjung park 👩‍💻
