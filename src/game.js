@@ -2,8 +2,14 @@
 import * as sound from './sound.js';
 import Field from './field.js';
 
+export const Reason = Object.freeze({
+    win : 'win',
+    lose : 'lose',
+    finish : 'finish',
+});
+
 // builder pattern
-export  default class GameBuilder {
+export class GameBuilder {
     withGameDuration(duration){
         this.gameDuration = duration;
         return this;
@@ -35,23 +41,23 @@ class Game{
         }
         if(this.level == 0){
             if(stage == 'first' && win == 'win'){
-                this.finish('win');
+                this.finish(Reason.win);
             }else if(stage == 'first' && win == 'lose'){
-                this.finish('lose');
+                this.finish(Reason.lose);
             }
         }
         if(this.level == 1){
             if(stage == 'second' && win == 'win'){
-                this.finish('win');
+                this.finish(Reason.win);
             }else if(stage == 'second' && win == 'lose'){
-                this.finish('lose');
+                this.finish(Reason.lose);
             }
         }
         if(this.level == 2){
             if(stage == 'third' && win == 'win'){
-                this.finish('finish');
+                this.finish(Reason.finish);
             }else if(stage == 'third' && win == 'lose'){
-                this.finish('lose');
+                this.finish(Reason.lose);
             }
         }
     }
@@ -80,17 +86,23 @@ class Game{
         this.startTimer();
     }
     
-    finish(win){
+    finish(reason){
+        console.log(reason);
         this.started = false;
         this.stopTimer();
         sound.stopBackground();
-        if(win == 'win' || win == 'finish'){
+        if(reason == 'win'){
             sound.playWin();
+            this.onGameStop && this.onGameStop(Reason.win);
         }
-        if(win == 'lose') {
+         if(reason == 'finish'){
+            sound.playWin();
+            this.onGameStop && this.onGameStop(Reason.finish);
+        }
+        if(reason == 'lose') {
             sound.playAlert();
+            this.onGameStop && this.onGameStop(Reason.lose);
         }
-        this.onGameStop && this.onGameStop(win);
     }
     
     initTimer(){
@@ -113,7 +125,7 @@ class Game{
             if(remainingTimeSec <= 0) {
                 clearInterval(this.timer);
                 sound.stopBackground();
-                this.finish('lose');
+                this.finish(Reason.lose);
                 return;
             }
             this.updateTimerText(--remainingTimeSec);

@@ -1,27 +1,23 @@
 'use strict';
 import PopUp from './popup.js';
-import GameBuilder from './game.js';
+import { GameBuilder,  Reason } from './game.js';
 
 const gameFinishBanner = new PopUp();
 const game = new GameBuilder()
-.withGameDuration(150)
+.withGameDuration(3)
 .build();
-
-gameFinishBanner.setClickListner((button) => {
-    game.onItemClick(button);
-});
 
 game.setGameStopListener((reason) => {
     console.log(reason);
     let message;
     switch(reason){
-        case 'win' :
+        case Reason.win :
             message = `YOU WON🎉<br/>Next Level❓`;
             break;
-        case 'lose' :
+        case Reason.lose :
             message = `YOU LOST💩<br/>Replay❓`;
             break;
-        case 'finish' :
+        case Reason.finish :
             message = `YOU FINISH!👍 REPLAY?`;
             break;
         default :
@@ -29,3 +25,8 @@ game.setGameStopListener((reason) => {
     }
     gameFinishBanner.showWithText(reason, message);
 });
+
+gameFinishBanner.setClickListner((button) => {
+    game.onItemClick(button);
+});
+
