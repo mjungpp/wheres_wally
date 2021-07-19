@@ -44,9 +44,6 @@ wheres_wally
 ├─ index.html               
 └─ style.css           
 
-<<<<<<< HEAD
-=======
->>>>>>> a33f0bfdcab9c0d83a973292deaabc4f2e56d231
 ### Productor :busts_in_silhouette:
 
 #### minjung park 👩‍💻
