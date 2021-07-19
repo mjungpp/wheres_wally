@@ -1,6 +1,6 @@
 'use strict';
 import * as sound from './sound.js';
-import Field from './field.js';
+import { Field,  Stage } from './field.js';
 
 export const Reason = Object.freeze({
     win : 'win',
@@ -35,28 +35,29 @@ class Game{
         this.startBtn.addEventListener('click', this.start);
     }
 
-    onFieldClick = (stage, win) => {
+    onFieldClick = (stage, reason) => {
         if(!this.started){
             return;
         }
+
         if(this.level == 0){
-            if(stage == 'first' && win == 'win'){
+            if(stage == Stage.first && reason == Reason.win){
                 this.finish(Reason.win);
-            }else if(stage == 'first' && win == 'lose'){
+            }else if(stage == Stage.first && reason == Reason.lose){
                 this.finish(Reason.lose);
             }
         }
         if(this.level == 1){
-            if(stage == 'second' && win == 'win'){
+            if(stage == Stage.second && reason == Reason.win ){
                 this.finish(Reason.win);
-            }else if(stage == 'second' && win == 'lose'){
+            }else if(stage == Stage.second && reason == Reason.lose){
                 this.finish(Reason.lose);
             }
         }
         if(this.level == 2){
-            if(stage == 'third' && win == 'win'){
+            if(stage == Stage.third && reason == Reason.win){
                 this.finish(Reason.finish);
-            }else if(stage == 'third' && win == 'lose'){
+            }else if(stage == Stage.third && reason == Reason.lose ){
                 this.finish(Reason.lose);
             }
         }
@@ -69,6 +70,7 @@ class Game{
         if(button == 'finish'){
             this.level = 0;
         }
+        console.log(this.level);
         this.start();
     }
 

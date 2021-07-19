@@ -1,6 +1,13 @@
 'use strict';
+import { Reason } from './game.js';
 
-export default class Field {
+export const Stage = Object.freeze({
+    first : 'first',
+    second : 'second',
+    third : 'third',
+});
+
+export class Field {
     constructor(){
         this.startContent = document.querySelector('.game__overay');
         this.bgImage = document.querySelector('.game__background__img');
@@ -32,19 +39,19 @@ export default class Field {
     let pointY = Math.round(y / screenHeight * 100);
 
     if((pointX >= 86 && pointX < 89) && (pointY >= 90 && pointY < 97)){
-        this.onFieldClick && this.onFieldClick('first', 'win');
+        this.onFieldClick && this.onFieldClick(Stage.first, Reason.win);
     }else {
-        this.onFieldClick && this.onFieldClick('first', 'lose');
+        this.onFieldClick && this.onFieldClick(Stage.first, Reason.lose);
     }
     if((pointX >= 48 && pointX < 50) && (pointY >= 48 && pointY < 52)){
-        this.onFieldClick && this.onFieldClick('second', 'win');
+        this.onFieldClick && this.onFieldClick(Stage.second, Reason.win);
     }else {
-        this.onFieldClick && this.onFieldClick('second', 'lose');
+        this.onFieldClick && this.onFieldClick(Stage.second, Reason.lose);
     }
     if((pointX >= 62 && pointX < 64) && (pointY >= 38 && pointY < 45)){
-        this.onFieldClick && this.onFieldClick('third', 'win');
+        this.onFieldClick && this.onFieldClick(Stage.third, Reason.win);
     }else {
-        this.onFieldClick && this.onFieldClick('third', 'lose');
+        this.onFieldClick && this.onFieldClick(Stage.third, Reason.lose);
         }
     }
 }
