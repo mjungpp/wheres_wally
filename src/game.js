@@ -59,7 +59,7 @@ export default class Game{
     start() {
         this.started = true;
         this.initTimer();
-        this.gameField.hideStartContent;
+        this.gameField.hideStartContent();
         this.setBackgroundImg();
         this.showTimer();
         sound.playBackground();
@@ -97,7 +97,7 @@ export default class Game{
         this.updateTimerText(remainingTimeSec);
         this.timer = setInterval(() => {
             if(remainingTimeSec <= 0) {
-                clearInterval(timer);
+                clearInterval(this.timer);
                 sound.stopBackground();
                 this.finish('lose');
                 return;
