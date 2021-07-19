@@ -87,22 +87,10 @@ class Game{
     }
     
     finish(reason){
-        console.log(reason);
         this.started = false;
         this.stopTimer();
         sound.stopBackground();
-        if(reason == 'win'){
-            sound.playWin();
-            this.onGameStop && this.onGameStop(Reason.win);
-        }
-         if(reason == 'finish'){
-            sound.playWin();
-            this.onGameStop && this.onGameStop(Reason.finish);
-        }
-        if(reason == 'lose') {
-            sound.playAlert();
-            this.onGameStop && this.onGameStop(Reason.lose);
-        }
+        this.onGameStop && this.onGameStop(reason);
     }
     
     initTimer(){
