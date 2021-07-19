@@ -2,17 +2,17 @@
 import * as sound from './sound.js';
 import Field from './field.js';
 
-export default class Game {
+export default class Game{
     constructor(gameDuration){
         this.gameDuration = gameDuration;
         this.gameTimer = document.querySelector('.game__timer');
+        this.gameField = new Field();
+        this.gameField.setClickListener(this.onFieldClick);
         this.started = false;
         this.timer = undefined;
         this.level = 0;
-        this.gameField = new Field();
-        this.gameField.setClickListener(this.onFieldClick);
         this.startBtn = document.querySelector('.game__startBtn');
-        this.startBtn.addEventListener('click', this.start);
+        this.startBtn.addEventListener('click', this.start.bind(this));
     }
 
     onFieldClick = (stage, win) => {
@@ -40,6 +40,16 @@ export default class Game {
                 this.finish('lose');
             }
         }
+    }
+    
+    onItemClick = (button) => {
+        if(button == 'next'){
+            ++this.level;
+        }
+        if(button == 'finish'){
+            this.level = 0;
+        }
+        this.start();
     }
 
     setGameStopListener(onGameStop){
