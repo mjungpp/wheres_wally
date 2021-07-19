@@ -2,7 +2,21 @@
 import * as sound from './sound.js';
 import Field from './field.js';
 
-export default class Game{
+// builder pattern
+export  default class GameBuilder {
+    withGameDuration(duration){
+        this.gameDuration = duration;
+        return this;
+    }
+
+    build() {
+        return new Game(
+            this.gameDuration
+        );
+    }
+}
+
+class Game{
     constructor(gameDuration){
         this.gameDuration = gameDuration;
         this.gameTimer = document.querySelector('.game__timer');

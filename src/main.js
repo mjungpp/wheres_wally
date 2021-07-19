@@ -1,9 +1,11 @@
 'use strict';
 import PopUp from './popup.js';
-import Game from './game.js';
+import GameBuilder from './game.js';
 
 const gameFinishBanner = new PopUp();
-const game = new Game(150);
+const game = new GameBuilder()
+.withGameDuration(150)
+.build();
 
 gameFinishBanner.setClickListner((button) => {
     game.onItemClick(button);
