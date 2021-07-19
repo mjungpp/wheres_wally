@@ -23,25 +23,21 @@ export default class PopUp{
         this.onItemClick = onItemClick;
     }
 
-    showWithText(win){
+    showWithText(reason, message){
         this.popup.style.visibility = 'visible';
-        let message;
 
-        if(win == 'win'){
+        if(reason == 'win'){
             this.icon.classList.add('fa-step-forward');
             this.icon.classList.remove('fa-redo');
-            message = `YOU WON🎉<br/>Next Level❓`;
         }
-        if(win == 'lose') {
+        if(reason == 'lose') {
             this.icon.classList.add('fa-redo');
             this.icon.classList.remove('fa-step-forward');
-            message = `YOU LOST💩<br/>Replay❓`;
         }
         
-        if(win == 'finish'){
+        if(reason == 'finish'){
             this.icon.classList.add('fa-fast-backward');
             this.icon.classList.remove('fa-step-forward');
-            message = `YOU FINISH!👍 REPLAY?`;
         }
         this.popup__msg.innerHTML = `${message}`;
     }

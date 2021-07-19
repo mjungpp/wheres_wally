@@ -11,4 +11,19 @@ gameFinishBanner.setClickListner((button) => {
 
 game.setGameStopListener((reason) => {
     console.log(reason);
+    let message;
+    switch(reason){
+        case 'win' :
+            message = `YOU WON🎉<br/>Next Level❓`;
+            break;
+        case 'lose' :
+            message = `YOU LOST💩<br/>Replay❓`;
+            break;
+        case 'finish' :
+            message = `YOU FINISH!👍 REPLAY?`;
+            break;
+        default :
+            throw new Error('not valid reason');
+    }
+    gameFinishBanner.showWithText(reason, message);
 });
