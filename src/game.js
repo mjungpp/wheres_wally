@@ -12,7 +12,7 @@ export default class Game{
         this.timer = undefined;
         this.level = 0;
         this.startBtn = document.querySelector('.game__startBtn');
-        this.startBtn.addEventListener('click', this.start.bind(this));
+        this.startBtn.addEventListener('click', this.start);
     }
 
     onFieldClick = (stage, win) => {
@@ -56,7 +56,7 @@ export default class Game{
         this.onGameStop = onGameStop;
     }
     
-    start() {
+    start = () => {
         this.started = true;
         this.initTimer();
         this.gameField.hideStartContent();
