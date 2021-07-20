@@ -1,4 +1,5 @@
 <h2 align="center"><em>Where's Wally❓</em></h2>
+
 ```
     해당 프로젝트는 그림책 월리를 찾아라에서 아이디어를 가져왔습니다.
     월리를 찾아라(Where's Wally?)는 영국의 일러스트레이터 마틴 핸드포트가 그린 그림책입니다.
@@ -15,12 +16,10 @@
 
 <h2 align="center"><em>Improvement🌺</em></h2>
 <br/>
-<p align="center"><em>❤️ HTTP Method</em></p>
+<p align="center"><em>❤️ APIs</em></p>
 
 ```
-    GET METHOD와 달리, POST는 보안이 엄격한 것을 배웠습니다.
-    GET을 사용해서 데이터를 불러올때는, params로 정보를 노출시켜도 되지만,
-    POST는 body를 통해 노출되지 않으며, 설정을 통해 header의 보안토큰을 요구하게 만들 수 있기 때문입니다.
+설명 추가 필요
 ```
 
 <p align="center"><em>🧡 Module </em></p>
@@ -53,10 +52,10 @@
 
 <h2 align="center"><em>Major Features🌟</em></h2>
 <br/>
-<p align="center"><em>❤ Get Weather through current City Data</em></br>유저의 도시 데이터로 날씨정보 받아오기 <a href="https://weatherstack.com">Weather API</a></p>
-<p align="center"><em>🧡 Manage Todo and link by Folder</br>Todo와 link를 폴더별로 관리가능</em></p>
-<p align="center"><em>💛 Mark check when Todo is done </br>Todo완료하면 체크표시 눌러서 업데이트 가능 </em></p>
-<p align="center"><em>💚 Change current City or Delete the Folder or Todo,Link</br>현재 도시를 변경하거나 폴더,Todo,Link 삭제가능</em></p>
+<p align="center"><em>❤ 제목</em></br>내용<a href="https://weatherstack.com">Weather API</a></p>
+<p align="center"><em>🧡 제목</br>내용</em></p>
+<p align="center"><em>💛 제목</br>내용</em></p>
+<p align="center"><em>💚 제목</br>내용</em></p>
  <br/>
 <h2 align="center"><em>Structure Tree🌳</em></h2>
 
