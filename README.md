@@ -1,53 +1,79 @@
-## ✨Where's Wally? (월리를 찾아라!)✨
+<h2 align="center"><em>Where's Wally❓</em></h2>
+```
+해당 프로젝트는 그림책 월리를 찾아라에서 아이디어를 가져왔습니다.
+월리를 찾아라(Where's Wally?)는 영국의 일러스트레이터 마틴 핸드포트가 그린 그림책입니다.
+이 책의 목표는 거대한 한 장의 그림 속에서 월리를 찾는 것 입니다. 매우 간단해보이지만,
+주변에 수많은 인물들과 사물들이 매우 빽빽하게 그려져있어 찾기 쉽지 않으실 겁니다.
+준비가 되셨다면, 시작해볼까요?
+```
 
-### Where's Wally❓
+<h2 align="center"><em>URL🌎</em></h2>
+<p align="center"><em><a href="https://findwally.netlify.app">Let's start!</a></em>
+<br/><em>
+- 본 프로젝트는 💻에 최적화 되어있습니다.<br>
+- 해당 프로젝트는 netlify로 배포되었습니다.</em></p>
 
-> 1987년 영국의 일러스트레이터 마틴 핸드포드가 그린, 한 시대를 풍미한 그림책. 시리즈는 1987년 영국에서 처음 발매된 이후 지금까지 전 세계 32개국 언어로 번역돼 약 6천500만부 이상 판매된 세계적인 베스트셀러다. 거대한 한 장의 그림 속에서 월리를 찾는 것이 이 책의 주목표이다. 물론 찾기 쉽지 않도록 주변에 수많은 다른 인물들과 사물들이 매우 빽빽하게 그려져 있다.  (출처 : namuwiki)
+<h2 align="center"><em>Improvement🌺</em></h2>
+<br/>
+<p align="center"><em>❤️ HTTP Method</em></p>
 
-### Planning instrument💪
+```
+    GET METHOD와 달리, POST는 보안이 엄격한 것을 배웠습니다.
+    GET을 사용해서 데이터를 불러올때는, params로 정보를 노출시켜도 되지만,
+    POST는 body를 통해 노출되지 않으며, 설정을 통해 header의 보안토큰을 요구하게 만들 수 있기 때문입니다.
+```
 
-> 드림코딩 아카데미의 브라우저 101 강의를 수강하고, 강의를 적용해 프로젝트를 진행하고자 기획하게 되었습니다. 
+<p align="center"><em>🧡 Module </em></p>
 
-### Execution🌐
-<a href="https://findwally.netlify.app">🌏<em>Go!</em></a><br/>
-<p>- 본 프로젝트는 💻에 최적화 되어있습니다.<br>
-- 해당 프로젝트는 netlify로 배포되었습니다.</p>
+```
+설명 추가 필요
+```
 
-### Production period📅
+<p align="center"><em>💛 this binding</em></p>
 
-2021.07.06 ~ 2021.07.14 (9 days) 제작<br>
-2021.07.15 ~ Refactoring(모듈화) 진행중
+```
+설명 추가 필요
+```
 
-### Description🔍
+<p align="center"><em>💚 type guarantee </em></p>
 
-> 1. 본 프로젝트는 3개의 스테이지가 제공됩니다.
-> 2. 주어진 시간(2분 30초)동안 월리를 찾을 경우 게임에서 우승하여 다음 스테이지로 넘어가고, 시간 내에 월리를 찾지 못하거나 월리가 아닌 다른 요소를 클릭할 경우 게임에서 실패하여 다시 게임을 진행합니다.
-> 3. 모든 게임이 끝나면, 최종 우승 finish 문구가 나타나며 게임 다시 시작 기능이 제공됩니다.
+```
+설명 추가 필요
+```
 
-### Use skills🔨
+ <br/>
 
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/></a>
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/></a>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black"/></a>
+<h2 align="center"><em>Tech used🛠</em></h2>
+<br/>
+<p align="center">
+  <img src="http://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"/></a>&nbsp
+  <img src="http://img.shields.io/badge/-CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"/></a>&nbsp
+  <img src="https://img.shields.io/badge/-Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white"/></a>&nbsp<br/>
+</p>
 
-### Source Tree🌳
+<h2 align="center"><em>Major Features🌟</em></h2>
+<br/>
+<p align="center"><em>❤ Get Weather through current City Data</em></br>유저의 도시 데이터로 날씨정보 받아오기 <a href="https://weatherstack.com">Weather API</a></p>
+<p align="center"><em>🧡 Manage Todo and link by Folder</br>Todo와 link를 폴더별로 관리가능</em></p>
+<p align="center"><em>💛 Mark check when Todo is done </br>Todo완료하면 체크표시 눌러서 업데이트 가능 </em></p>
+<p align="center"><em>💚 Change current City or Delete the Folder or Todo,Link</br>현재 도시를 변경하거나 폴더,Todo,Link 삭제가능</em></p>
+ <br/>
+<h2 align="center"><em>Structure Tree🌳</em></h2>
 
-wheres_wally           
-├─ img                 
-├─ sound               
-├─ src                 
-│  ├─ field.js         
-│  ├─ game.js          
-│  ├─ main.js          
-│  ├─ popup.js         
-│  └─ sound.js         
-├─ index.html               
-└─ style.css           
+```
+wheres_wally
+├─ img
+├─ sound
+├─ src
+│ ├─ field.js
+│ ├─ game.js
+│ ├─ main.js
+│ ├─ popup.js
+│ └─ sound.js
+├─ index.html
+└─ style.css
+```
 
-### Productor :busts_in_silhouette:
-
-#### minjung park 👩‍💻
-
-##### email✉️ : mjungpp@naver.com<br>
-
-##### github profile :octocat: : https://github.com/mjungpp
+<br/>
+<h2 align="center"><em>Reference✔</em></h2>
+<p align="center"><em><a href="https://academy.dream-coding.com/">💜 Dream Coding Academy</a><br><strong>Browser 101</strong></em></p>
