@@ -67,8 +67,12 @@ class Game{
         if(button == 'next'){
             ++this.level;
         }
+        if(button == 'replay'){
+            this.level;
+        }
         if(button == 'finish'){
             this.level = 0;
+            console.log('finish!');
         }
         console.log(this.level);
         this.start();
@@ -83,8 +87,8 @@ class Game{
         this.initTimer();
         this.gameField.hideStartContent();
         this.setBackgroundImg();
-        this.showTimer();
         sound.playBackground();
+        this.showTimer();
         this.startTimer();
     }
     

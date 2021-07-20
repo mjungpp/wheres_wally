@@ -27,17 +27,20 @@ export default class PopUp{
         this.popup.style.visibility = 'visible';
 
         if(reason == 'win'){
-            this.icon.classList.add('fa-step-forward');
+            this.icon.classList.remove('fa-fast-backward');
             this.icon.classList.remove('fa-redo');
+            this.icon.classList.add('fa-step-forward');
         }
         if(reason == 'lose') {
-            this.icon.classList.add('fa-redo');
+            this.icon.classList.remove('fa-fast-backward');
             this.icon.classList.remove('fa-step-forward');
+            this.icon.classList.add('fa-redo');
         }
         
         if(reason == 'finish'){
-            this.icon.classList.add('fa-fast-backward');
             this.icon.classList.remove('fa-step-forward');
+            this.icon.classList.remove('fa-redo');
+            this.icon.classList.add('fa-fast-backward');
         }
         this.popup__msg.innerHTML = `${message}`;
     }

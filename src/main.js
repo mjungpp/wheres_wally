@@ -9,7 +9,6 @@ const game = new GameBuilder()
 .build();
 
 game.setGameStopListener((reason) => {
-    console.log(reason);
     let message;
     switch(reason){
         case Reason.win :
