@@ -32,6 +32,11 @@ Finish! 팝업창이 나타나며 사운드와 함께 게임이 종료됩니다.
 * 팝업창에 리플레이 버튼이 제공됩니다! 처음으로 돌아가 다시 게임을 진행하길 바란다면 버튼을 클릭해주세요!
 ```
 
+<h2 align="center"><em>ScreenShots📸</em></h2>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/64456391/126350046-c91d06ea-9719-4df9-9af4-eb1f925d6f12.jpg">
+</p>
+<br/>
 <h2 align="center"><em>Learned 👩‍🎓</em></h2>
 <br/>
 <p align="center"><em>🧡 Module </em></p>
