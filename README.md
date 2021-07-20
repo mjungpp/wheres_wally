@@ -50,8 +50,8 @@ sound에 관련된 함수를 sound.js로 분리하였습니다. 이를 통해 �
 const game = new GameBuilder()
 .withGameDuration(150)
 .build();
-로 변경하였습니다. 
-다음과 같은 패턴 적용 리팩토링을 통해 사용자가 코드를 조금 더 직관적으로 보고 이해할 수 있도록 하였습니다.
+와 같이 변경하였습니다. 
+다음과 같이 빌더 패턴 적용한 리팩토링을 통해 사용자가 코드를 더 직관적으로 보고 이해할 수 있도록 하였습니다.
 ```
 
 <p align="center"><em>💛 this binding</em></p>
