@@ -97,6 +97,6 @@ wheres_wally
 ```
 
 <br/>
-<h2 align="center"><em>Reference✔</em></h2>
+<h2 align="center"><em>Credit✔</em></h2>
 <p align="center"><em>💜 Dream Coding Academy<br><strong>Browser 101</strong></em></p>
 <p align="center"><em><strong><a href="https://github.com/mjungpp/browser_101/">View learned code</strong></em></p>
