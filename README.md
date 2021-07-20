@@ -52,7 +52,7 @@
 
 <h2 align="center"><em>Major Features🌟</em></h2>
 <br/>
-<p align="center"><em>❤ 제목</em></br>내용<a href="https://weatherstack.com">Weather API</a></p>
+<p align="center"><em>❤ 제목</em></br>내용</p>
 <p align="center"><em>🧡 제목</br>내용</em></p>
 <p align="center"><em>💛 제목</br>내용</em></p>
 <p align="center"><em>💚 제목</br>내용</em></p>
