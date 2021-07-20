@@ -9,7 +9,7 @@
 ```
 
 <h2 align="center"><em>Execution🌎</em></h2>
-<p align="center"><em><a href="https://findwally.netlify.app">Let's start!</a></em>
+<p align="center"><em><a href="https://findwally.netlify.app" target="_blank">Let's start!</a></em>
 <br/><em>
 - 본 프로젝트는 💻에 최적화 되어있습니다.<br>
 - 해당 프로젝트는 netlify로 배포되었습니다.</em></p>
