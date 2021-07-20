@@ -29,7 +29,7 @@ Lost! 팝업창과 사운드가 나타나며, 다시 실행이 가능합니다.
 * 주어진 3개의 스테이지에서 모두 시간 내에 월리를 발견하면,
 Finish! 팝업창이 나타나며 사운드와 함께 게임이 종료됩니다.
 
-* 팝업창에 리플레이 버튼이 제공되어, 처음으로 돌아가 다시 게임을 진행하길 바란다면 버튼을 클릭해주세요!
+* 팝업창에 리플레이 버튼이 제공됩니다! 처음으로 돌아가 다시 게임을 진행하길 바란다면 버튼을 클릭해주세요!
 ```
 
 <h2 align="center"><em>Learned 👩‍🎓</em></h2>
@@ -97,6 +97,6 @@ wheres_wally
 ```
 
 <br/>
-<h2 align="center"><em>Credit✔</em></h2>
+<h2 align="center"><em>Credit🙏</em></h2>
 <p align="center"><em>💜 Dream Coding Academy<br><strong>Browser 101</strong></em></p>
 <p align="center"><em><strong><a href="https://github.com/mjungpp/browser_101/">View learned code</strong></em></p>
