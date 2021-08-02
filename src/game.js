@@ -72,9 +72,7 @@ class Game{
         }
         if(button == 'finish'){
             this.level = 0;
-            console.log('finish!');
         }
-        console.log(this.level);
         this.start();
     }
 
@@ -111,7 +109,7 @@ class Game{
     showTimer() {
         this.gameTimer.style.visibility = 'visible';
     }
-
+    
     startTimer() {
         let remainingTimeSec = this.gameDuration;
         this.updateTimerText(remainingTimeSec);
