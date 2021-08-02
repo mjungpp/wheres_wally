@@ -12,8 +12,8 @@
 <p align="center"><em><a href="https://mjungpp.github.io/wheres_wally/"/>Let's start!</a></em>
 <br/><em>
 - 본 프로젝트는 💻에 최적화 되어있습니다.<br>
-- 전체 화면으로 플레이해주셔야 정상 동작합니다.<br>
-- 해당 프로젝트는 Github 배포되었습니다.</em></p>
+- 전체 화면(F11)으로  정상 동작합니다.<br>
+- 해당 프로젝트는 Github로 배포되었습니다.</em></p>
 <br/>
 <h2 align="center"><em>Description project 📝</em></h2>
 <br/>
